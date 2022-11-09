@@ -52,7 +52,7 @@ const AddUser = () => {
                 <input name='url' type="text" placeholder="Image url" className="input input-bordered w-full max-w-xs" />
                 <textarea name='description' className="textarea textarea-bordered w-3/4" placeholder="Description. You can add only 100 words"></textarea>
             </div>
-            <input className='btn bg-orange-600' type="submit" value="Add User" />
+            <input className='btn bg-orange-600 border-none mt-4' type="submit" value="Add User" />
         </form>
     );
 };
