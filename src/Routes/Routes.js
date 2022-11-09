@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddUser from "../components/AddUser/AddUser";
 import Details from "../components/Details/Details";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
                 path: '/allServices/:id',
                 element: <Details></Details>,
                 loader: ({params}) => fetch(`http://localhost:5000/allServices/${params.id}`)
+            },
+            {
+                path: '/adduser',
+                element: <AddUser></AddUser>,
+                // loader: fetch('http://localhost:5000/allServices')
             }
         ]
     }
