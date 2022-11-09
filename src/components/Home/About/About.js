@@ -25,7 +25,7 @@ const About = () => {
                     <div className='flex items-center'>
                         <span className='mr-2 text-2xl'><MdLocationPin></MdLocationPin></span>
                         <div>
-                            <p className='text-sm'>Need a repair? our address</p>
+                            <p className='text-sm'>Need any help? our address</p>
                             <h3 className='text-xl font-bold'>Bakalia Chittagong, Bangladesh</h3>
                         </div>
                     </div>

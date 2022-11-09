@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ServiceList from '../ServiceList/ServiceList';
 
 const Services = () => {
@@ -23,7 +24,7 @@ const Services = () => {
                 ></ServiceList>)
             }
             <div className='flex items-center justify-center mt-10'>
-                <button className='btn bg-orange-600 border-none px-8'>See all</button>
+                <button className='btn bg-orange-600 border-none px-8'><Link to='/myservice'>See all</Link></button>
             </div>
         </div>
     );
