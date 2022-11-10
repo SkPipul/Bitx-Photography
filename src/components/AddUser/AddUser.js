@@ -32,7 +32,7 @@ const AddUser = () => {
                 swal("Good job!", "User added successfully", "success");
             }
             else{
-                swal("Sorry!", "User not add", "error");
+                swal("Sorry!", "User not added", "error");
             }
         })
         .catch(err => {

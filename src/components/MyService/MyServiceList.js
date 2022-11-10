@@ -9,9 +9,7 @@ const MyServiceList = ({ service }) => {
             <figure className="px-10 pt-10">
                 <PhotoProvider>
                     <PhotoView src={img}>
-
                         <img src={img} alt="" />
-
                     </PhotoView>
                 </PhotoProvider>
             </figure>

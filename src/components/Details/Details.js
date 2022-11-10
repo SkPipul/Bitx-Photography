@@ -1,32 +1,34 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Details = () => {
-    const { title, img, description, price } = useLoaderData();
+    const { _id, title, img, description, price } = useLoaderData();
     const {user} = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?url=${img}`)
+        fetch(`http://localhost:5000/reviewsById?id=${_id}`)
         .then(res => res.json())
         .then(data => {
             setReviews(data)
             console.log(data);
         })
         .catch(err => console.error(err))
-    }, [img])
+    }, [_id])
 
     const handleReview = event => {
         event.preventDefault();
         const form = event.target;
         const reviewItem = {
+            serviceId: _id,
             name: form.name.value,
             email: form.email.value,
             url: form.url.value,
             review: form.review.value
         }
+        console.log(reviewItem)
         fetch('http://localhost:5000/reviews', {
             method: 'POST',
             headers: {
@@ -63,7 +65,12 @@ const Details = () => {
 
             {/* table */}
             <div className="overflow-x-auto w-full">
-                <h1 className='text-3xl font-mono font-semibold text-red-500 text-center'>Total number of Review {reviews.length}</h1>
+                {
+                    reviews.length !== 0 ?
+                    <h1 className='text-3xl font-mono font-semibold text-red-500 text-center'>Total number of Review {reviews.length}</h1>
+                :
+                <h1 className='text-3xl font-mono font-semibold text-red-500 text-center'>No Reviews added yet</h1>
+                }
                 <table className="table w-full">
                     <thead>
                         <tr>
@@ -116,7 +123,7 @@ const Details = () => {
             </form>
                 </>
             :
-                <h2 className='text-3xl font-mono font-bold text-red-500 my-12 text-center'>!You have to login for giving reviews here</h2>
+                <h2 className='text-3xl font-mono font-bold text-red-500 my-12 text-center'>!You have to login for giving reviews here. Please <Link to='/login' className='text-green-500 font-bold'>login here</Link></h2>
             }
         </div>
     );

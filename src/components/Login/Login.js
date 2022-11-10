@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import { FcGoogle } from 'react-icons/fc';
+
 
 const Login = () => {
-    const {logIn} = useContext(AuthContext);
+    const {logIn, signInWithGoogle} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
@@ -19,6 +21,18 @@ const Login = () => {
             const user = res.user;
             console.log(user);
             form.reset();
+            navigate(from, {replace: true})
+        })
+        .catch(err => console.error(err))
+
+        
+    }
+    
+    const handleGoogle = () => {
+        signInWithGoogle()
+        .then(res => {
+            const user = res.user;
+            console.log(user);
             navigate(from, {replace: true})
         })
         .catch(err => console.error(err))
@@ -51,6 +65,7 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
+                        <div><FcGoogle onClick={handleGoogle} className='text-3xl mt-3 cursor-pointer'></FcGoogle></div>
                         <p className='text-center'>New to BiTx ? <Link className='text-orange-600 font-bold' to="/signup">Sign Up</Link> </p>
                     </div>
                 </form>
