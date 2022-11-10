@@ -4,7 +4,7 @@ import swal from 'sweetalert';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Details = () => {
-    const { _id, title, img, description, price } = useLoaderData();
+    const { title, img, description, price } = useLoaderData();
     console.log(img)
     const {user} = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
@@ -17,7 +17,7 @@ const Details = () => {
             console.log(data);
         })
         .catch(err => console.error(err))
-    }, [])
+    }, [img])
 
     const handleReview = event => {
         event.preventDefault();
@@ -109,9 +109,9 @@ const Details = () => {
                 <form onSubmit={handleReview} className='my-12'>
                 <div className='grid grid-cols-1 gap-3'>
                     <input name='name' type="text" placeholder="Name" className="input input-bordered w-full" />
-                    <input name='email' type="text" placeholder="Email" className="input input-bordered w-full" />
-                    <input name='url' type="text" placeholder={img} className="input input-bordered w-full" defaultValue={img} />
-                    <input name='review' type="text" placeholder="Review message" className="input input-bordered w-full" />
+                    <input name='email' type="text" placeholder="Email" className="input input-bordered w-full" defaultValue={user?.email} readOnly/>
+                    <input name='url' type="text" placeholder="Photo url" className="input input-bordered w-full" defaultValue={img} readOnly/>
+                    <input name='review' type="text" placeholder="Review message" className="input input-bordered w-full" required/>
                 </div>
                 <input className='btn bg-green-500 border-none mt-4' type="submit" value="Add Review" />
             </form>

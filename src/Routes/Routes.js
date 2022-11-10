@@ -3,6 +3,7 @@ import AddUser from "../components/AddUser/AddUser";
 import Details from "../components/Details/Details";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
+import MyReviews from "../components/MyReviews/MyReviews";
 import MyService from "../components/MyService/MyService";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import SignUp from "../components/SignUp/SignUp";
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: '/adduser',
                 element: <PrivateRoute><AddUser></AddUser></PrivateRoute>
+            },
+            {
+                path: '/myReviews',
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
             }
         ]
     }
