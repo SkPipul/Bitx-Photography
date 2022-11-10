@@ -4,6 +4,7 @@ import Details from "../components/Details/Details";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
 import MyService from "../components/MyService/MyService";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import SignUp from "../components/SignUp/SignUp";
 import Main from "../Layout/Main";
 
@@ -35,8 +36,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/adduser',
-                element: <AddUser></AddUser>,
-                // loader: fetch('http://localhost:5000/allServices')
+                element: <PrivateRoute><AddUser></AddUser></PrivateRoute>
             }
         ]
     }

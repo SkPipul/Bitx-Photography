@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Details = () => {
+    const { _id, title, img, description, price } = useLoaderData();
+    console.log(img)
+    const {user} = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch(`http://localhost:5000/reviews?url=${img}`)
         .then(res => res.json())
         .then(data => {
             setReviews(data)
@@ -42,7 +46,7 @@ const Details = () => {
             .catch(err => console.error(err));
     }
 
-    const { title, img, description, price } = useLoaderData();
+    
     return (
         <div className='grid lg:grid-cols-2 sm:grid-cols-1 mx-[100px]'>
 
@@ -60,8 +64,8 @@ const Details = () => {
 
             {/* table */}
             <div className="overflow-x-auto w-full">
+                <h1 className='text-3xl font-mono font-semibold text-red-500 text-center'>Total number of Review {reviews.length}</h1>
                 <table className="table w-full">
-                    
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -99,15 +103,22 @@ const Details = () => {
                 </table>
             </div>
 
-            <form onSubmit={handleReview} className='my-12'>
+            {
+                user?.email ?
+                <>
+                <form onSubmit={handleReview} className='my-12'>
                 <div className='grid grid-cols-1 gap-3'>
                     <input name='name' type="text" placeholder="Name" className="input input-bordered w-full" />
                     <input name='email' type="text" placeholder="Email" className="input input-bordered w-full" />
-                    <input name='url' type="text" placeholder="Photo url" className="input input-bordered w-full" />
+                    <input name='url' type="text" placeholder={img} className="input input-bordered w-full" defaultValue={img} />
                     <input name='review' type="text" placeholder="Review message" className="input input-bordered w-full" />
                 </div>
                 <input className='btn bg-green-500 border-none mt-4' type="submit" value="Add Review" />
             </form>
+                </>
+            :
+                <h2 className='text-3xl font-mono font-bold text-red-500 my-12 text-center'>!You have to login for giving reviews here</h2>
+            }
         </div>
     );
 };
