@@ -5,7 +5,6 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const Details = () => {
     const { title, img, description, price } = useLoaderData();
-    console.log(img)
     const {user} = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
 

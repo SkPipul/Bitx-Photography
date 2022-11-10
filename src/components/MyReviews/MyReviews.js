@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { AiFillDelete } from 'react-icons/ai';
+import swal from 'sweetalert';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
@@ -15,9 +16,32 @@ const MyReviews = () => {
             })
     }, [user.email])
 
+    const handleDelete = id => {
+        const remove = window.confirm('Are you sure, you want to delete?');
+        if(remove){
+            fetch(`http://localhost:5000/allReviews/${id}`, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                const remainReview = reviews.filter(review => review._id !== id)
+                setReviews(remainReview)
+                if(data.deletedCount === 1){
+                    swal("Successful!", "Your review is deleted successfully", "success");
+                }
+            })
+        }
+    }
+
     return (
         <div className='mx-[120px] mb-8'>
-            <h1 className='text-3xl font-mono text-red-500 font-bold mx-[240px] my-4'>Total reviews {reviews.length}</h1>
+            {
+                reviews.length !== 0 ?
+                <h1 className='text-3xl font-mono text-red-500 font-bold mx-[240px] my-4'>Total reviews {reviews.length}</h1>
+            :
+            <h1 className='text-3xl font-mono text-red-500 font-bold mx-[240px] my-4'>No Reviews added here</h1>
+            }
             <table className="table w-3/4">
                 <thead>
                     <tr>
@@ -30,7 +54,7 @@ const MyReviews = () => {
                 <tbody>
                     {
                         reviews.map(review => {
-                            return <tr>
+                            return <tr key={review._id}>
                                 <td>
                                     
                                     <div className="flex items-center space-x-3">
@@ -51,7 +75,7 @@ const MyReviews = () => {
                                 <td>{review.review}</td>
                                 <th>
                                         <label>
-                                            <button className='btn btn-ghost'><AiFillDelete className='text-2xl text-red-500'></AiFillDelete></button>
+                                            <button onClick={() => handleDelete(review._id)} className='btn btn-ghost'><AiFillDelete className='text-2xl text-red-500'></AiFillDelete></button>
                                         </label>
                                     </th>
                             </tr>
