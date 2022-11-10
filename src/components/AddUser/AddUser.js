@@ -1,10 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import useTitle from '../../hooks/useTitle';
 
 
 const AddUser = () => {
     const navigate = useNavigate();
+    useTitle('Add User/BiTx Photography')
 
     const handleAddUser = event => {
         event.preventDefault();
@@ -15,7 +17,7 @@ const AddUser = () => {
             url: form.url.value,
             description: form.description.value
         }
-        fetch('http://localhost:5000/allServices', {
+        fetch('https://bitx-photography-server.vercel.app/allServices', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -47,9 +49,9 @@ const AddUser = () => {
     return (
         <form onSubmit={handleAddUser} className='mx-[400px] my-12'>
             <div className='grid grid-cols-1 gap-3'>
-                <input name='title' type="text" placeholder="Title/Service name" className="input input-bordered w-full max-w-xs" />
-                <input name='price' type="text" placeholder="Price" className="input input-bordered w-full max-w-xs" />
-                <input name='url' type="text" placeholder="Image url" className="input input-bordered w-full max-w-xs" />
+                <input name='title' type="text" placeholder="Title/Service name" className="input input-bordered w-full max-w-xs" required/>
+                <input name='price' type="text" placeholder="Price" className="input input-bordered w-full max-w-xs" required/>
+                <input name='url' type="text" placeholder="Image url" className="input input-bordered w-full max-w-xs" required/>
                 <textarea name='description' className="textarea textarea-bordered w-3/4" placeholder="Description. You can add only 100 words"></textarea>
             </div>
             <input className='btn bg-orange-600 border-none mt-4' type="submit" value="Add User" />

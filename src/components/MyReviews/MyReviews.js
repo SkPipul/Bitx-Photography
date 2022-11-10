@@ -2,13 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { AiFillDelete } from 'react-icons/ai';
 import swal from 'sweetalert';
+import useTitle from '../../hooks/useTitle';
 
 const MyReviews = () => {
     const { user } = useContext(AuthContext);
-    const [reviews, setReviews] = useState([])
+    const [reviews, setReviews] = useState([]);
+    useTitle('My Reviews/BiTx Photography')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allReviews?email=${user.email}`)
+        fetch(`https://bitx-photography-server.vercel.app/allReviews?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
@@ -19,7 +21,7 @@ const MyReviews = () => {
     const handleDelete = id => {
         const remove = window.confirm('Are you sure, you want to delete?');
         if (remove) {
-            fetch(`http://localhost:5000/allReviews/${id}`, {
+            fetch(`https://bitx-photography-server.vercel.app/allReviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

@@ -9,7 +9,7 @@ const Details = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviewsById?id=${_id}`)
+        fetch(`https://bitx-photography-server.vercel.app/reviewsById?id=${_id}`)
         .then(res => res.json())
         .then(data => {
             setReviews(data)
@@ -29,7 +29,7 @@ const Details = () => {
             review: form.review.value
         }
         console.log(reviewItem)
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://bitx-photography-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

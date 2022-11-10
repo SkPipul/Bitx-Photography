@@ -5,7 +5,7 @@ import { MdLocationPin } from 'react-icons/md';
 
 const About = () => {
     return (
-        <div className="card w-full bg-black text-white rounded-md mt-14">
+        <div className="card w-full bg-black text-white rounded-md my-14">
             <div className="card-body py-14">
                 <div className='flex items-center justify-around'>
                     <div className='flex items-center'>

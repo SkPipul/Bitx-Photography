@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             {
                 path: '/allServices/:id',
                 element: <Details></Details>,
-                loader: ({params}) => fetch(`http://localhost:5000/allServices/${params.id}`)
+                loader: ({params}) => fetch(`https://bitx-photography-server.vercel.app/allServices/${params.id}`)
             },
             {
                 path: '/adduser',
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
             {
                 path: '/myReviews',
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/allReviews/${params.id}`)
+                loader: ({params}) => fetch(`https://bitx-photography-server.vercel.app/allReviews/${params.id}`)
             },
             {
                 path: '/blog',
