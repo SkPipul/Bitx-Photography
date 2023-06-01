@@ -11,10 +11,10 @@ const Banner = () => {
         <div className="carousel w-3/4 mx-auto">
             <div id="slide1" className="carousel-item relative w-full">
                 <div className='carousel-img'>
-                    <img src={img1} className="w-full h-full rounded-xl" alt='' />
+                    <img src={img2} className="w-full h-full rounded-xl" alt='' />
                 </div>
                 <div className="absolute flex justify-end transform -translate-y-1/2 left-24 top-1/4">
-                    <h1 className='text-6xl font-bold text-sky-200'>
+                    <h1 className='text-6xl font-bold text-orange-500'>
                         Wedding Photography <br />
                         Is Waiting For Your <br />
                         Service
@@ -30,10 +30,10 @@ const Banner = () => {
             </div>
             <div id="slide2" className="carousel-item relative w-full">
                 <div className='carousel-img'>
-                    <img src={img2} className="w-full h-full rounded-xl" alt='' />
+                    <img src={img1} className="w-full h-full rounded-xl" alt='' />
                 </div>
                 <div className="absolute flex justify-end transform -translate-y-1/2 left-24 top-1/4">
-                    <h1 className='text-6xl font-bold text-orange-500'>
+                    <h1 className='text-6xl font-bold text-sky-200'>
                         Wedding Photography <br />
                         Is Hiring For Your <br />
                         Service

@@ -13,7 +13,7 @@ const Services = () => {
 
     return (
         <div>
-            <div className='text-center my-10'>
+            <div className='text-center mt-10'>
                 <h2 className='text-5xl font-mono font-bold'>This is our Photography service</h2>
                 <p className='mt-2'>You can see all the services and details. Please make sure to give review in our review section</p>
             </div>
