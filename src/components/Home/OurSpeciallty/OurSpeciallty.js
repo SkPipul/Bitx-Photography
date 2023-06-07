@@ -5,7 +5,7 @@ const OurSpeciallty = () => {
     <div className="px-10 mt-20">
       <h3 className="text-5xl font-bold text-center">Why Choose Us</h3>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 mt-10">
-        <div className="px-6 py-16 shadow-lg bg-sky-200 rounded-md hover:shadow-black transition-all delay-150">
+        <div className="px-6 py-16 shadow-lg bg-[#e6e6e6] rounded-md hover:shadow-gray-500 cursor-pointer transition-all delay-150">
           <h4 className="text-3xl font-bold text-center mb-6">
             High Quality Images
           </h4>
@@ -15,7 +15,7 @@ const OurSpeciallty = () => {
             eiusmod te
           </p>
         </div>
-        <div className="px-6 py-16 shadow-lg bg-sky-200 rounded-md hover:shadow-black transition-all delay-150">
+        <div className="px-6 py-16 shadow-lg bg-[#e6e6e6] rounded-md hover:shadow-gray-500 cursor-pointer transition-all delay-150">
           <h4 className="text-3xl font-bold text-center mb-6">
           Abundant Experience
           </h4>
@@ -25,7 +25,7 @@ const OurSpeciallty = () => {
             eiusmod te
           </p>
         </div>
-        <div className="px-6 py-16 shadow-lg bg-sky-200 rounded-md hover:shadow-black transition-all delay-150">
+        <div className="px-6 py-16 shadow-lg bg-[#e6e6e6] rounded-md hover:shadow-gray-500 cursor-pointer transition-all delay-150">
           <h4 className="text-3xl font-bold text-center mb-6">
           Modern Equipments
           </h4>

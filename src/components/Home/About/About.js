@@ -5,7 +5,7 @@ import { MdLocationPin } from "react-icons/md";
 
 const About = () => {
   return (
-      <div className="my-20">
+      <div className="mt-20">
         <h2 className="text-5xl font-extrabold text-center mb-10">Let’s Work Together</h2>
         <div className="card w-full bg-black text-white rounded-none">
       <div className="card-body py-14">

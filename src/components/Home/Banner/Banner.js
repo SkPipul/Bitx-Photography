@@ -8,7 +8,7 @@ import './Banner.css'
 
 const Banner = () => {
     return (
-        <div className="carousel w-3/4 mx-auto">
+        <div className="carousel w-[90%] mx-auto">
             <div id="slide1" className="carousel-item relative w-full">
                 <div className='carousel-img'>
                     <img src={img2} className="w-full h-full rounded-xl" alt='' />

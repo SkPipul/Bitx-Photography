@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ServiceList = ({ service }) => {
     const { _id, img, title, description, price } = service;
     return (
-        <div className="hero py-2 bg-base-200">
+        <div className="hero py-2 bg-base-200 mt-6">
             <div className="hero-content flex-col lg:flex-row">
                 <PhotoProvider>
                     <PhotoView src={img}>
